@@ -1,3 +1,3 @@
 import AboutCinema from "./AboutCinema";
 
-export default AboutCinema
+export default AboutCinema;

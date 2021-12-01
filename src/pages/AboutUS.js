@@ -1,11 +1,8 @@
-import React from 'react';
-import AboutCinema from '../components/AboutCinema/AboutCinema';
-
+import React from "react";
+import AboutCinema from "../components/AboutCinema/AboutCinema";
 
 const AboutUS = () => {
- return (
-   <AboutCinema/>
- );
+  return <AboutCinema />;
 };
 
 export default AboutUS;
