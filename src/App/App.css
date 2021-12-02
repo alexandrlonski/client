@@ -3,7 +3,6 @@
   border: none;
   border-radius: 4px;
   color: white;
-  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -12,7 +11,8 @@
 
 .link {
   color: #fff;
-  margin: 5px 15px;
+  margin: 5px 10px;
+  padding: 5px 10px;
   font-size: 16px;
   text-decoration: none;
 }
@@ -20,4 +20,8 @@
 .link:hover {
   color: #4ca3dd;
   transition: 200ms ease-in;
+}
+
+.cursor {
+  cursor: pointer;
 }

@@ -1,10 +1,9 @@
 import AboutFilm from "./pages/AboutFilm";
 import AboutUS from "./pages/AboutUS";
 import Admin from "./pages/Admin";
+import Auth from "./pages/Auth";
 import Basket from "./pages/BasketPage";
 import Films from "./pages/Films";
-import LogInPage from "./pages/LogInPage";
-import RegistrationPage from "./pages/RegistrationPage";
 import {
   ABOUTFILM_ROUTE,
   ABOUTUS_ROUTE,
@@ -37,11 +36,11 @@ export const publicRoutes = [
   },
   {
     path: REGISTRATION_ROUTE,
-    Component: RegistrationPage,
+    Component: Auth,
   },
   {
     path: LOGIN_ROUTE,
-    Component: LogInPage,
+    Component: Auth,
   },
   {
     path: ABOUTUS_ROUTE,

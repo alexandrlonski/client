@@ -1,13 +1,13 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import LogIn from "../components/LogIn/LogIn";
+import Authorization from "../components/Authorization";
 
-const LogInPage = () => {
+const Auth = () => {
   return (
     <Container>
-      <LogIn />
+      <Authorization />
     </Container>
   );
 };
 
-export default LogInPage;
+export default Auth;

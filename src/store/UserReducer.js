@@ -1,17 +1,19 @@
 const initialSate = {
-  user: {},
-  isAuth: false,
+  user: {
+    role: "ADMIN",
+    isAuth: true,
+  },
 };
 
 const CHANGE_USER = "CHANGE_USER";
-const CREATE_USER = "CREATE_USER";
+const LOGOUT_USER = "LOGOUT_USER";
 
-export const userReducer = (state = initialSate, action) => {
+export const userReducer = (state = initialSate.user, action) => {
   switch (action.type) {
     case CHANGE_USER:
       return { ...state, isAuth: action.payload };
-    case CREATE_USER:
-      return { ...state, user: action.payload };
+    case LOGOUT_USER:
+      return { ...state, role: "USER", isAuth: false };
 
     default:
       return state;
@@ -21,7 +23,7 @@ export const userIsLogin = (payload) => ({
   type: CHANGE_USER,
   payload,
 });
-export const createUser = (payload) => ({
-  type: CREATE_USER,
+export const userLogOut = (payload) => ({
+  type: LOGOUT_USER,
   payload,
 });
