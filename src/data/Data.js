@@ -32,8 +32,3 @@ export const films = [
     desc: "For film 5 Some quick example text to build on the card title and make up the bulk of the card's content For film 1 Some quick example text to build on the card title and make up the bulk of the card's content For film 1 Some quick example text to build on the card title and make up the bulk of the card's content For film 1 Some quick example text to build on the card title and make up the bulk of the card's content ",
   },
 ];
-
-export const isAuth = {
-  user: false,
-  admin: false,
-};
