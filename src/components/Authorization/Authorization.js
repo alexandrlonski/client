@@ -1,36 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { userIsLogin } from "../../store/UserReducer";
-import { NavLink, useLocation } from "react-router-dom";
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../../utils/consts";
+import { changeUserRole, userIsLogin } from "../../store/UserReducer";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import {
+  ABOUTUS_ROUTE,
+  LOGIN_ROUTE,
+  REGISTRATION_ROUTE,
+} from "../../utils/consts";
+import { login, registration } from "../../http/userApi";
 
 const Authorization = () => {
   const dispatch = useDispatch();
   const logIn = (bool) => {
     dispatch(userIsLogin(bool));
   };
+  const changeRole = (userRole) => {
+    dispatch(changeUserRole(userRole));
+  };
   const location = useLocation();
+  const navigate = useNavigate();
   const isLogin = location.pathname === LOGIN_ROUTE;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [role, setRole] = useState("");
+
+  const changeRequest = async () => {
+    try {
+      let data;
+      if (isLogin) {
+        data = await login(email, password);
+      } else {
+        data = await registration(email, password);
+      }
+      logIn(true);
+      console.log(data.role);
+      changeRole(data.role);
+      navigate(ABOUTUS_ROUTE);
+    } catch (e) {
+      alert(e.response.data.message);
+    }
+  };
 
   return (
     <Form onSubmit={(e) => e.preventDefault()}>
-      {!isLogin ? (
+      {/* {email === "admin1@mail.ru" && password === "11111" ? (
         <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter name" />
+          <Form.Label>Role</Form.Label>
+          <Form.Control
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            type="text"
+            placeholder="Enter role"
+          />
         </Form.Group>
-      ) : null}
+      ) : null} */}
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="Enter email"
+        />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          type="password"
+          placeholder="Password"
+        />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
@@ -50,8 +96,7 @@ const Authorization = () => {
         className="mt-3 align-self-end"
         variant="outline-success"
         type="submit"
-        onClick={() => logIn(true)}
-      >
+        onClick={() => changeRequest()}>
         {isLogin ? "Log In" : "Registration"}
       </Button>
     </Form>

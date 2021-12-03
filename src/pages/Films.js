@@ -4,9 +4,15 @@ import { films } from "../data/Data";
 
 const Films = () => {
   return (
-    <div className="d-flex justify-content-center" style={{ padding: "50px" }}>
+    <div className="d-flex justify-content-center flex-wrap">
       {films.map((film) => (
-        <Film key={film.id} title={film.title} src={film.src} desc={film.desc} id={film.id} />
+        <Film
+          key={film.id}
+          title={film.title}
+          src={film.src}
+          desc={film.desc}
+          id={film.id}
+        />
       ))}
     </div>
   );

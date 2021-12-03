@@ -6,10 +6,12 @@ import { isAuth } from "../../data/Data";
 
 const AppRouter = () => {
   return (
-    <Container style={{ padding: "40px" }}>
+    <Container style={{ padding: "40px 10px" }}>
       <Routes>
         {isAuth &&
-          authRoutes.map(({ path, Component }) => <Route key={path} path={path} element={<Component />} exact />)}
+          authRoutes.map(({ path, Component }) => (
+            <Route key={path} path={path} element={<Component />} exact />
+          ))}
         {publicRoutes.map(({ path, Component }) => (
           <Route key={path} path={path} element={<Component />} exact />
         ))}

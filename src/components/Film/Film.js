@@ -13,17 +13,16 @@ const Film = (props) => {
   };
 
   return (
-    <Card style={{ width: "18rem", margin: "5px" }}>
+    <Card style={{ width: "15rem", margin: "5px" }}>
       <Card.Img variant="top" src={props.src} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text>{props.desc}</Card.Text>
+        <Card.Text className="truncate-text">{props.desc}</Card.Text>
         <NavLink
           onClick={() => changeFilmId(props.id)}
           variant="secondary"
           className="link button"
-          to={ABOUTFILM_ROUTE}
-        >
+          to={ABOUTFILM_ROUTE}>
           Read more
         </NavLink>
       </Card.Body>
