@@ -7,36 +7,36 @@ import Footer from "../components/Footer";
 import NavbarTop from "../components/Header/Header";
 import { check } from "../http/userApi";
 import { changeUserRole, userIsLogin } from "../store/UserReducer";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
-      check()
-        .then((data) => {
-          dispatch(userIsLogin(true));
-          dispatch(changeUserRole(data.role));
-        })
-        .finally(() => setLoading(false));
-    }, 1000);
+    check()
+      .then((data) => {
+        dispatch(userIsLogin(true));
+        dispatch(changeUserRole(data.role));
+      })
+      .finally(() => setLoading(false));
   });
 
   if (loading) {
     return (
-      <div className=" vh-100 d-flex justify-content-center align-items-center  ">
+      <div className="vh-100 d-flex justify-content-center align-items-center">
         <Spinner animation="border" />
       </div>
     );
   }
 
   return (
-    <BrowserRouter>
-      <NavbarTop />
-      <AppRouter />
-      <Footer />
-    </BrowserRouter>
+    <div className="min-vh-100 d-flex flex-column justify-content-between">
+      <BrowserRouter>
+        <NavbarTop />
+        <AppRouter />
+        <Footer />
+      </BrowserRouter>
+    </div>
   );
 }
 

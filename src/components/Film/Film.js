@@ -1,28 +1,25 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { ABOUTFILM_ROUTE } from "../../utils/consts";
+import { FILMS_ROUTE } from "../../utils/consts";
 import { useDispatch } from "react-redux";
 import { changeFilm } from "../../store/FilmReducer";
+import "./Film.scss";
 
 const Film = (props) => {
   const dispatch = useDispatch();
 
-  const changeFilmId = (filmId) => {
-    dispatch(changeFilm(filmId));
-  };
-
   return (
-    <Card style={{ width: "15rem", margin: "5px" }}>
+    <Card className="card">
       <Card.Img variant="top" src={props.src} />
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text className="truncate-text">{props.desc}</Card.Text>
         <NavLink
-          onClick={() => changeFilmId(props.id)}
+          onClick={() => dispatch(changeFilm(props.id))}
           variant="secondary"
           className="link button"
-          to={ABOUTFILM_ROUTE}>
+          to={FILMS_ROUTE + "/" + props.id}>
           Read more
         </NavLink>
       </Card.Body>

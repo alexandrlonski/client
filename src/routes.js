@@ -5,7 +5,6 @@ import Auth from "./pages/Auth";
 import Basket from "./pages/BasketPage";
 import Films from "./pages/Films";
 import {
-  ABOUTFILM_ROUTE,
   ABOUTUS_ROUTE,
   ADMIN_ROUTE,
   BASKET_ROUTE,
@@ -16,13 +15,34 @@ import {
 
 export const authRoutes = [
   {
+    path: FILMS_ROUTE,
+    Component: Films,
+  },
+  {
+    path: FILMS_ROUTE + "/:id",
+    Component: AboutFilm,
+  },
+  {
     path: BASKET_ROUTE,
     Component: Basket,
   },
+  {
+    path: "/*",
+    Component: AboutUS,
+  },
+  {
+    path: ABOUTUS_ROUTE,
+    Component: AboutUS,
+  },
 ];
+
 export const adminRoutes = [
   {
     path: ADMIN_ROUTE,
+    Component: Admin,
+  },
+  {
+    path: "/*",
     Component: Admin,
   },
 ];
@@ -33,7 +53,7 @@ export const publicRoutes = [
     Component: Films,
   },
   {
-    path: ABOUTFILM_ROUTE,
+    path: FILMS_ROUTE + "/:id",
     Component: AboutFilm,
   },
   {

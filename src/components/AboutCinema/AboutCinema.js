@@ -36,19 +36,12 @@ const AboutCinema = () => {
 
         <Carousel.Caption>
           <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    //  <Card>
-    //   <Card.Img variant="top" src="https://abws.bycard.by/uploads/objects/thumbs/1300x560/9wc0kpbfv.jpg" />
-    //   <Card.Body>
-    //     <Card.Text>
-    //       Some quick example text to build on the card title and make up the bulk
-    //       of the card's content.
-    //     </Card.Text>
-    //   </Card.Body>
-    // </Card>
   );
 };
 

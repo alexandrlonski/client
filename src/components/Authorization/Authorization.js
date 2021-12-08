@@ -34,7 +34,6 @@ const Authorization = () => {
         data = await registration(email, password);
       }
       logIn(true);
-      console.log(data.role);
       changeRole(data.role);
       navigate(ABOUTUS_ROUTE);
     } catch (e) {
@@ -44,17 +43,9 @@ const Authorization = () => {
 
   return (
     <Form onSubmit={(e) => e.preventDefault()}>
-      {/* {email === "admin1@mail.ru" && password === "11111" ? (
-        <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Role</Form.Label>
-          <Form.Control
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            type="text"
-            placeholder="Enter role"
-          />
-        </Form.Group>
-      ) : null} */}
+      <h2 className="text-center">
+        {isLogin ? "LogIn Page" : "Register Page"}
+      </h2>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -97,7 +88,7 @@ const Authorization = () => {
         variant="outline-success"
         type="submit"
         onClick={() => changeRequest()}>
-        {isLogin ? "Log In" : "Registration"}
+        {isLogin ? "LogIn" : "Registration"}
       </Button>
     </Form>
   );

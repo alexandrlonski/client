@@ -11,7 +11,12 @@ const AboutFilm = () => {
       {films
         .filter((film) => film.id === filmId)
         .map((film) => (
-          <FilmDesc key={film.id} title={film.title} src={film.src} desc={film.desc} />
+          <FilmDesc
+            key={film.id}
+            title={film.title}
+            src={film.src}
+            desc={film.desc}
+          />
         ))}
     </div>
   );
