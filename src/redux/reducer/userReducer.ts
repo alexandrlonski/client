@@ -7,13 +7,13 @@ import {
 import { UserActions } from "../actions-types/userActions";
 import { Actions } from "../cases/cases";
 
-const initialSate: IUserState = {
-  role: "User",
+const initialState: IUserState = {
+  role: "USER",
   isAuth: false,
 };
 
 export const userReducer = (
-  state: IUserState = initialSate,
+  state: IUserState = initialState,
   action: UserActions
 ): IUserState => {
   switch (action.type) {
@@ -24,7 +24,7 @@ export const userReducer = (
     case Actions.CHANGE_USER_ROLE:
       return { ...state, role: action.role };
     case Actions.LOGOUT_USER:
-      return { ...state, role: "USER", isAuth: false };
+      return { ...state, role: initialState.role, isAuth: initialState.isAuth };
 
     default:
       return state;

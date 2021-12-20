@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { adminRoutes, authRoutes, publicRoutes } from "../../routes";
 import { RootState } from "../../redux/reducer/rootReducer";
 import { ADMIN_ROUTE, FILMS_ROUTE } from "../../utils/constsRoutes";
+import { ADMIN } from "../../utils/constsRoles";
 import "./AppRouter.scss";
 
 const AppRouter: FC = () => {
@@ -13,16 +14,16 @@ const AppRouter: FC = () => {
   return (
     <Container className="router-container">
       <Routes>
-        {isAuth && !(role === "ADMIN")
+        {isAuth && !(role === ADMIN)
           ? authRoutes.map(({ path, Component }) => (
               <Route key={path} path={path} element={<Component />} />
             ))
           : null}
-        {role === "ADMIN" &&
+        {role === ADMIN &&
           adminRoutes.map(({ path, Component }) => (
             <Route key={path} path={path} element={<Component />} />
           ))}
-        {!isAuth && !(role === "ADMIN")
+        {!isAuth && !(role === ADMIN)
           ? publicRoutes.map(({ path, Component }) => (
               <Route key={path} path={path} element={<Component />} />
             ))
@@ -32,7 +33,7 @@ const AppRouter: FC = () => {
           element={
             <Navigate
               replace
-              to={!(role === "ADMIN") ? FILMS_ROUTE : ADMIN_ROUTE}
+              to={!(role === ADMIN) ? FILMS_ROUTE : ADMIN_ROUTE}
             />
           }
         />

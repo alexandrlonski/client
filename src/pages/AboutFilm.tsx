@@ -6,20 +6,19 @@ import { useParams } from "react-router-dom";
 const AboutFilm: FC = () => {
   const { id } = useParams();
   const filmId = Number(id);
+  const film = films.find((film) => film.id === filmId);
   return (
-    <div>
-      {films
-        .filter((film) => film.id === filmId)
-        .map((film) => (
-          <FilmDesc
-            id={film.id}
-            key={film.id}
-            title={film.title}
-            src={film.src}
-            desc={film.desc}
-          />
-        ))}
-    </div>
+    <>
+      {film ? (
+        <FilmDesc
+          id={film.id}
+          key={film.id}
+          title={film.title}
+          src={film.src}
+          desc={film.desc}
+        />
+      ) : null}
+    </>
   );
 };
 

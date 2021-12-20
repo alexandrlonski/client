@@ -1,33 +1,23 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { Form, Button, Row } from "react-bootstrap";
+import { NavLink, useNavigate } from "react-router-dom";
+import { REGISTRATION_ROUTE } from "../utils/constsRoutes";
+import { LoginReduxAsunc } from "../redux/asyncActions/user";
 import { useDispatch } from "react-redux";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { LOGIN_ROUTE } from "../../utils/constsRoutes";
-import { authRequest } from "../../requests/authRequest";
 
-const Registeration: FC = () => {
+const Login: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const login = () => {
+    dispatch(LoginReduxAsunc(email, password, navigate));
+  };
 
   return (
     <Form
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
-      <h2 className="text-center">Register Page</h2>
-      <Form.Group className="mb-3" controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
-          }
-          type="text"
-          placeholder="Enter Name"
-        />
-      </Form.Group>
+      <h2 className="text-center">LogIn Page</h2>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
@@ -58,20 +48,18 @@ const Registeration: FC = () => {
       </Form.Group>
       <Row className="d-flex justify-content-between mt-3 pt-3 pr-3">
         <div>
-          If you have an account? <NavLink to={LOGIN_ROUTE}>LogIn</NavLink>
+          No account? <NavLink to={REGISTRATION_ROUTE}>Registration</NavLink>
         </div>
       </Row>
       <Button
         className="mt-3 align-self-end"
         variant="outline-success"
         type="submit"
-        onClick={() =>
-          authRequest(email, password, dispatch, pathname, navigate)
-        }>
-        Registration
+        onClick={login}>
+        LogIn
       </Button>
     </Form>
   );
 };
 
-export default Registeration;
+export default Login;

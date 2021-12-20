@@ -1,5 +1,10 @@
 import { FC } from "react";
 import { Carousel } from "react-bootstrap";
+import {
+  IMAGE_CINEMA_MINSK,
+  IMAGE_CINEMA_VITEBSK,
+  IMAGE_CINEMA_BREST,
+} from "../../data/cinemaImage";
 import "./AboutCinema.scss";
 
 const AboutCinema: FC = () => {
@@ -8,7 +13,7 @@ const AboutCinema: FC = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="http://visit-petersburg.ru/media/uploads/tourobject/198842/198842_cover.jpeg.1050x700_q95_crop_upscale.jpg"
+          src={IMAGE_CINEMA_MINSK}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -19,7 +24,7 @@ const AboutCinema: FC = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://image.freepik.com/free-photo/cinema-cinema-attributes-cinemas-films-online-viewing-popcorn-and-glasses_99433-1577.jpg"
+          src={IMAGE_CINEMA_VITEBSK}
           alt="Second slide"
         />
 
@@ -31,7 +36,7 @@ const AboutCinema: FC = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://mag-cinema.com/image/catalog/News/2020/mammut2.jpg"
+          src={IMAGE_CINEMA_BREST}
           alt="Third slide"
         />
 

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { IFilm } from "../../types/film";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducer/rootReducer";
-import { BUY_TICKET } from "../../utils/constsRoutes";
+import { BUY_TICKET, LOGIN_ROUTE } from "../../utils/constsRoutes";
 
 const FilmDesc: FC<IFilm> = (props) => {
   const { desc, src, title } = props;
@@ -19,7 +19,9 @@ const FilmDesc: FC<IFilm> = (props) => {
         <Card.Text>{desc}</Card.Text>
         <Button
           className="link button cursor"
-          onClick={() => (isAuth ? navigate(BUY_TICKET) : navigate("/login"))}>
+          onClick={() =>
+            isAuth ? navigate(BUY_TICKET) : navigate(LOGIN_ROUTE)
+          }>
           Buy a ticket online
         </Button>
       </Card.Body>
