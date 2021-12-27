@@ -4,6 +4,7 @@ export interface IUserGet {
   id: number;
   email: string;
   role: string;
+  name: string;
   iat: number;
   exp: number;
 }
@@ -11,6 +12,7 @@ export interface IUserGet {
 export interface IUserState {
   role: string;
   isAuth: boolean;
+  name: string;
 }
 
 export interface IUserIsLogin {

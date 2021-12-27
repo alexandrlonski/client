@@ -1,6 +1,6 @@
 import AboutFilm from "./pages/AboutFilm";
 import AboutUS from "./pages/AboutUS";
-import Admin from "./pages/Admin";
+import AdminPage from "./pages/Admin";
 import LoginP from "./pages/Login";
 import Basket from "./pages/BasketPage";
 import Films from "./pages/Films";
@@ -46,7 +46,12 @@ export const authRoutes: IPath[] = [
 export const adminRoutes: IPath[] = [
   {
     path: ADMIN_ROUTE,
-    Component: Admin,
+    Component: AdminPage,
+    exact: true,
+  },
+  {
+    path: FILMS_ROUTE,
+    Component: Films,
     exact: true,
   },
 ];

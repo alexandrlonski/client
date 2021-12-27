@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../redux/reducer/rootReducer";
-import { toggleShowModal } from "../../redux/reducer/modalReducer";
+import { toggleShowLogoutModal } from "../../redux/action-creators/modal";
 import { Nav, Navbar, Container, Form, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { USER_ICON, ADMIN_ICON } from "../../data/icon";
@@ -15,10 +15,11 @@ import {
 import "./Header.scss";
 
 const Header: FC = () => {
-  const { isAuth, role } = useSelector((state: RootState) => state.user);
+  const { isAuth, role, name } = useSelector((state: RootState) => state.user);
+
   const dispatch = useDispatch();
   const logout = () => {
-    dispatch(toggleShowModal(true));
+    dispatch(toggleShowLogoutModal(true));
   };
 
   return (
@@ -55,12 +56,15 @@ const Header: FC = () => {
               <div onClick={logout} className="link button">
                 LogOut
               </div>
-              <NavLink to={role === "ADMIN" ? ADMIN_ROUTE : BASKET_ROUTE}>
+              <NavLink
+                className="link"
+                to={role === "ADMIN" ? ADMIN_ROUTE : BASKET_ROUTE}>
                 <Image
                   className="user-icon"
                   src={role === "ADMIN" ? USER_ICON : ADMIN_ICON}
                   rounded
                 />
+                <div>{name}</div>
               </NavLink>
             </div>
           ) : (

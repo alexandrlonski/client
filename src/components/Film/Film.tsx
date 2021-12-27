@@ -1,29 +1,43 @@
 import { FC } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FILMS_ROUTE } from "../../utils/constsRoutes";
+import { BUY_TICKET, FILMS_ROUTE, LOGIN_ROUTE } from "../../utils/constsRoutes";
+import { SERVER } from "../../utils/constsPath";
 import { IFilm } from "../../types/film";
-import { changeFilm } from "../../redux/reducer/filmReducer";
+import { changeFilm } from "../../redux/action-creators/film";
 import "./Film.scss";
+import { RootState } from "../../redux/reducer/rootReducer";
 
 const Film: FC<IFilm> = (props) => {
-  const { id, desc, src, title } = props;
+  const { id, description, img, title } = props;
+  const { isAuth } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const chooseFilm = (): void => {
-    dispatch(changeFilm(id));
+  const readMore = (): void => {
+    dispatch(changeFilm({ id, description, img, title }));
     navigate(`${FILMS_ROUTE}/${id}`);
-    localStorage.setItem("filmId", `${id}`);
+    localStorage.setItem("film", JSON.stringify(props));
+  };
+  const buyTicket = (): void => {
+    dispatch(changeFilm({ id, description, img, title }));
+    isAuth ? navigate(BUY_TICKET) : navigate(LOGIN_ROUTE);
+    localStorage.setItem("film", JSON.stringify(props));
   };
 
   return (
     <Card className="card">
-      <Card.Img variant="top" src={src} />
+      <Card.Img variant="top" className="h-100 cover" src={SERVER + img} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
-        <Card.Text className="truncate-text">{desc}</Card.Text>
-        <Button onClick={chooseFilm} className="link button">
+        <Card.Text className="truncate-text">{description}</Card.Text>
+        <Button
+          variant="secondary"
+          className=" link button mb-3"
+          onClick={buyTicket}>
+          Buy a ticket online
+        </Button>
+        <Button variant="secondary" className="link button" onClick={readMore}>
           Read more
         </Button>
       </Card.Body>

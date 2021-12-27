@@ -1,15 +1,28 @@
 import { Actions } from "../redux/cases/cases";
 
 export interface IFilm {
-  id: number;
+  createdAt?: string;
+  description: string;
+  filmsListId?: number | null;
+  id: number | null;
+  img: string;
+  ticketId?: number | null;
   title: string;
-  src: string;
-  desc: string;
+  updatedAt?: string;
 }
 
 export interface IChangeFilm {
   type: Actions;
-  payload: number;
+  payload: IFilm;
+}
+
+export interface IShowFilms {
+  type: Actions;
+  payload: IFilm[];
+}
+export interface IShowOneFilm {
+  type: Actions;
+  payload: string;
 }
 
 export type FilmState = {

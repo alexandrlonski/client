@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { Form, Button, Row } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
 import { REGISTRATION_ROUTE } from "../utils/constsRoutes";
-import { LoginReduxAsunc } from "../redux/asyncActions/user";
+import { userLogin } from "../redux/async-actions/user";
 import { useDispatch } from "react-redux";
 
 const Login: FC = () => {
@@ -11,7 +11,7 @@ const Login: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const login = () => {
-    dispatch(LoginReduxAsunc(email, password, navigate));
+    dispatch(userLogin(email, password, navigate));
   };
 
   return (

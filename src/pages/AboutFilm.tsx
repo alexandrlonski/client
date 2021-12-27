@@ -1,11 +1,14 @@
 import { FC } from "react";
 import FilmDesc from "../components/FilmDesc/FilmDesc";
-import { films } from "../data/data";
 import { useParams } from "react-router-dom";
+import { IFilm } from "../types/film";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/reducer/rootReducer";
 
 const AboutFilm: FC = () => {
   const { id } = useParams();
   const filmId = Number(id);
+  const films: IFilm[] = useSelector((state: RootState) => state.films);
   const film = films.find((film) => film.id === filmId);
   return (
     <>
@@ -14,8 +17,8 @@ const AboutFilm: FC = () => {
           id={film.id}
           key={film.id}
           title={film.title}
-          src={film.src}
-          desc={film.desc}
+          img={film.img}
+          description={film.description}
         />
       ) : null}
     </>

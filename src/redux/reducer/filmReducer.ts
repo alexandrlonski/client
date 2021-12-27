@@ -1,24 +1,23 @@
-import { FilmState, IChangeFilm } from "../../types/film";
+import { IFilm } from "../../types/film";
 import { FilmActions } from "../actions-types/filmActions";
 import { Actions } from "../cases/cases";
 
-const initialSate: FilmState = {
-  filmId: 1,
+const initialFillmSate: IFilm = {
+  description: "",
+  id: null,
+  img: "",
+  title: "",
 };
 
 export const filmReducer = (
-  state = initialSate,
+  state = initialFillmSate,
   action: FilmActions
-): FilmState => {
+): IFilm => {
   switch (action.type) {
     case Actions.CHANGE_ID:
-      return { ...state, filmId: action.payload };
+      return { ...action.payload };
 
     default:
       return state;
   }
 };
-export const changeFilm = (payload: number): IChangeFilm => ({
-  type: Actions.CHANGE_ID,
-  payload,
-});

@@ -1,17 +1,21 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
 import Film from "../components/Film/Film";
-import { films } from "../data/data";
+import { RootState } from "../redux/reducer/rootReducer";
+import { IFilm } from "../types/film";
 
 const Films: FC = () => {
+  const films: IFilm[] = useSelector((state: RootState) => state.films);
+
   return (
     <div className="d-flex justify-content-center flex-wrap">
       {films.map((film) => (
         <Film
           key={film.id}
-          title={film.title}
-          src={film.src}
-          desc={film.desc}
           id={film.id}
+          description={film.description}
+          img={film.img}
+          title={film.title}
         />
       ))}
     </div>

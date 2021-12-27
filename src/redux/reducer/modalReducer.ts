@@ -1,14 +1,11 @@
-import {
-  IChangeTextModal,
-  IModalState,
-  IToggleShowModal,
-} from "../../types/modal";
+import { IModalState } from "../../types/modal";
 import { ModalActions } from "../actions-types/modalActions";
 import { Actions } from "../cases/cases";
 
 const initialSate: { modal: IModalState } = {
   modal: {
-    show: false,
+    errorModalShow: false,
+    logoutModalShow: false,
     text: "",
   },
 };
@@ -18,8 +15,10 @@ export const modalReducer = (
   action: ModalActions
 ): IModalState => {
   switch (action.type) {
-    case Actions.CHANGE_SHOW_MODAL:
-      return { ...state, show: action.show };
+    case Actions.CHANGE_SHOW_ERROR_MODAL:
+      return { ...state, errorModalShow: action.errorModalShow };
+    case Actions.CHANGE_SHOW_LOGOUT_MODAL:
+      return { ...state, logoutModalShow: action.logoutModalShow };
     case Actions.CHANGE_TEXT:
       return { ...state, text: action.text };
 
@@ -27,11 +26,3 @@ export const modalReducer = (
       return state;
   }
 };
-export const toggleShowModal = (show: boolean): IToggleShowModal => ({
-  type: Actions.CHANGE_SHOW_MODAL,
-  show,
-});
-export const changeTextModal = (text: string): IChangeTextModal => ({
-  type: Actions.CHANGE_TEXT,
-  text,
-});

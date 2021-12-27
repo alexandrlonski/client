@@ -6,12 +6,13 @@ import { USER } from "../utils/constsRoles";
 export async function registration(
   email: string,
   password: string,
-  role = USER
+  name: string
 ): Promise<IUserGet> {
   const { data } = await $host.post("api/user/registration", {
     email,
     password,
-    role,
+    name,
+    role: USER,
   });
   localStorage.setItem("token", data.token);
   return jwt_decode(data.token);

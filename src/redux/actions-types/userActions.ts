@@ -6,6 +6,10 @@ export interface IChangeUserRole {
   readonly type: "CHANGE_USER_ROLE";
   role: string;
 }
+export interface IChangeUserName {
+  readonly type: "CHANGE_USER_NAME";
+  name: string;
+}
 export interface ILogOutUser {
   readonly type: "LOGOUT_USER";
 }
@@ -17,5 +21,6 @@ export interface ICheckUser {
 export type UserActions =
   | IChangeUser
   | IChangeUserRole
+  | IChangeUserName
   | ILogOutUser
   | ICheckUser;

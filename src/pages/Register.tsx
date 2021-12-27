@@ -3,7 +3,7 @@ import { Form, Button, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE } from "../utils/constsRoutes";
-import { RegisterReduxAsunc } from "../redux/asyncActions/user";
+import { userRegistration } from "../redux/async-actions/user";
 
 const Registeration: FC = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const Registeration: FC = () => {
   const [password, setPassword] = useState<string>("");
   const [name, setName] = useState<string>("");
   const register = () => {
-    dispatch(RegisterReduxAsunc(email, password, navigate));
+    dispatch(userRegistration(email, password, name, navigate));
   };
 
   return (
