@@ -28,3 +28,13 @@ export interface IShowOneFilm {
 export type FilmState = {
   filmId: number;
 };
+
+export interface IFetchFilms {
+  count: number;
+  rows: IFilm[];
+}
+export interface IPageView {
+  count: number;
+  limit: number;
+  pageNumber: number;
+}

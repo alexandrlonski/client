@@ -8,13 +8,11 @@ import LogoutModal from "./components/LogoutModal";
 import AppRouter from "../src/components/AppRouter";
 import Footer from "./components/Footer";
 import "./App.scss";
-import { showFilms } from "./redux/async-actions/film";
 
 const App: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkUser());
-    dispatch(showFilms());
   }, [dispatch]);
 
   return (
