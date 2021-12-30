@@ -16,17 +16,15 @@ const Admin = () => {
     formData.append("img", file);
     dispatch(createFilm(formData));
   };
+
   return (
-    <Form
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+    <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
       <h2 className="text-center">Add Film</h2>
       <Form.Group className="mb-3" controlId="formBasicTitle">
         <Form.Label>Title</Form.Label>
         <Form.Control
           value={title}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
           type="text"
           placeholder="Title"
         />
@@ -37,24 +35,15 @@ const Admin = () => {
           as="textarea"
           rows={5}
           value={description}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setDesc(e.target.value)
-          }
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)}
           type="text"
           placeholder="Description"
         />
       </Form.Group>
       <Form.Group controlId="formFile" className="mb-3">
-        <Form.Control
-          type="file"
-          onChange={(e: any) => setFile(e.target.files[0])}
-        />
+        <Form.Control type="file" onChange={(e: any) => setFile(e.target.files[0])} />
       </Form.Group>
-      <Button
-        className="mt-3 align-self-end"
-        variant="outline-success"
-        type="submit"
-        onClick={create}>
+      <Button className="mt-3 align-self-end" variant="outline-success" type="submit" onClick={create}>
         Create
       </Button>
     </Form>

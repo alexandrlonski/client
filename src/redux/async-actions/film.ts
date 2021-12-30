@@ -1,11 +1,8 @@
 import { Dispatch } from "react";
-import { createFilmReq, fetchFilms } from "../../http/filmApi";
-import { IFetchFilms, IFilm } from "../../types/film";
+import { createFilmReq, deleteFilmReq, fetchFilms } from "../../http/filmApi";
+import { IFetchFilms } from "../../types/film";
 import { changeCount, showAllFilms } from "../action-creators/film";
-import {
-  changeTextModal,
-  toggleShowErrorModal,
-} from "../action-creators/modal";
+import { changeTextModal, toggleShowErrorModal } from "../action-creators/modal";
 import { FILMCREATED } from "../../utils/constsSuccess";
 
 export const showFilms = (page: number, limit: number) => {
@@ -26,7 +23,16 @@ export const createFilm = (film: FormData) => {
     try {
       await createFilmReq(film);
       dispatch(changeTextModal(FILMCREATED));
+    } catch (e: any) {
+      dispatch(changeTextModal(e.response.data.message));
       dispatch(toggleShowErrorModal(true));
+    }
+  };
+};
+export const deleteFilm = (id: number | null) => {
+  return async function (dispatch: Dispatch<any>) {
+    try {
+      await deleteFilmReq(id);
     } catch (e: any) {
       dispatch(changeTextModal(e.response.data.message));
       dispatch(toggleShowErrorModal(true));

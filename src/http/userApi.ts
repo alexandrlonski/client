@@ -3,11 +3,7 @@ import jwt_decode from "jwt-decode";
 import { IUserGet } from "../types/user";
 import { USER } from "../utils/constsRoles";
 
-export async function registration(
-  email: string,
-  password: string,
-  name: string
-): Promise<IUserGet> {
+export async function registration(email: string, password: string, name: string): Promise<IUserGet> {
   const { data } = await $host.post("api/user/registration", {
     email,
     password,
@@ -18,10 +14,7 @@ export async function registration(
   return jwt_decode(data.token);
 }
 
-export async function login(
-  email: string,
-  password: string
-): Promise<IUserGet> {
+export async function login(email: string, password: string): Promise<IUserGet> {
   const { data } = await $host.post("api/user/login", {
     email,
     password,

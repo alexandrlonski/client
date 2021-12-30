@@ -6,15 +6,18 @@ export async function createFilmReq(film: FormData): Promise<IFilm> {
   return data;
 }
 
-export async function fetchFilms(
-  page: number,
-  limit = 5
-): Promise<IFetchFilms> {
+export async function fetchFilms(page: number, limit = 5): Promise<IFetchFilms> {
   const { data } = await $host.get("api/film", { params: { page, limit } });
   return data;
 }
 
 export async function fetchFilm(id: string): Promise<IFilm> {
   const { data } = await $host.get("api/film/" + id);
+  return data;
+}
+
+export async function deleteFilmReq(id: number | null): Promise<IFilm> {
+  await $authHost.delete("api/film/" + id);
+  const { data } = await $host.get("api/film");
   return data;
 }
