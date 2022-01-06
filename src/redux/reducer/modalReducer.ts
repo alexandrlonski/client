@@ -6,6 +6,7 @@ const initialSate: { modal: IModalState } = {
   modal: {
     errorModalShow: false,
     logoutModalShow: false,
+    deleteFilmModalShow: false,
     text: "",
   },
 };
@@ -19,6 +20,8 @@ export const modalReducer = (
       return { ...state, errorModalShow: action.errorModalShow };
     case Actions.CHANGE_SHOW_LOGOUT_MODAL:
       return { ...state, logoutModalShow: action.logoutModalShow };
+    case Actions.CHANGE_SHOW_DELETE_FILM_MODAL:
+      return { ...state, deleteFilmModalShow: action.deleteFilmModalShow };
     case Actions.CHANGE_TEXT:
       return { ...state, text: action.text };
 

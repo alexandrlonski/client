@@ -11,11 +11,6 @@ export interface IPath {
   exact?: boolean;
 }
 
-// export interface IHandleClose {
-//   type: Actions;
-//   show: boolean;
-// }
-
 export interface IHandleState {
   type: Actions;
   logout: boolean;

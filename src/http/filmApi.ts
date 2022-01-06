@@ -6,12 +6,15 @@ export async function createFilmReq(film: FormData): Promise<IFilm> {
   return data;
 }
 
-export async function fetchFilms(page: number, limit = 5): Promise<IFetchFilms> {
+export async function getFilmsReq(
+  page: number,
+  limit = 5
+): Promise<IFetchFilms> {
   const { data } = await $host.get("api/film", { params: { page, limit } });
   return data;
 }
 
-export async function fetchFilm(id: string): Promise<IFilm> {
+export async function getFilmReq(id: string): Promise<IFilm> {
   const { data } = await $host.get("api/film/" + id);
   return data;
 }

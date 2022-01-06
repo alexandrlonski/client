@@ -6,6 +6,10 @@ export interface IChangeLogoutModalAction {
   readonly type: "CHANGE_SHOW_LOGOUT_MODAL";
   logoutModalShow: boolean;
 }
+export interface IChangeDeleteFilmModalAction {
+  readonly type: "CHANGE_SHOW_DELETE_FILM_MODAL";
+  deleteFilmModalShow: boolean;
+}
 export interface IChangeTextModalAction {
   readonly type: "CHANGE_TEXT";
   text: string;
@@ -19,4 +23,5 @@ export type ModalActions =
   | IChangeLogoutModalAction
   | IChangeErrorModalAction
   | IChangeTextModalAction
-  | IChangeLogoutStateModalAction;
+  | IChangeLogoutStateModalAction
+  | IChangeDeleteFilmModalAction;

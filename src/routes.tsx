@@ -1,21 +1,27 @@
-import AboutFilm from "./pages/AboutFilm";
-import AboutUS from "./pages/AboutUS";
-import AdminPage from "./pages/Admin";
-import LoginP from "./pages/Login";
-import Basket from "./pages/BasketPage";
-import Films from "./pages/Films";
-import BuyTicket from "./pages/BuyTicket";
+import AboutFilm from "./pages/User/AboutFilm";
+import AboutUS from "./pages/User/AboutUS";
+import AdminOffice from "./pages/Admin/OfficePage";
+import LoginP from "./pages/User/Login";
+import UserOffice from "./pages/User/OfficePage";
+import Films from "./pages/Common/Films";
+import FilmPreview from "./pages/Admin/FilmPreview";
+import BuyTicket from "./pages/User/BuyTicket";
+import AddFilmPage from "./pages/Admin/AddFilmPage";
+import AddCinemaPage from "./pages/Admin/AddCinemaPage";
 import { IPath } from "./types/types";
 import {
   ABOUTUS_ROUTE,
-  ADMIN_ROUTE,
-  BASKET_ROUTE,
+  USER_OFFICE_ROUTE,
+  ADMIN_OFFICE_ROUTE,
   BUY_TICKET,
   FILMS_ROUTE,
+  FILM_PREVIEW,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
+  ADD_FILM,
+  ADD_CINEMA,
 } from "./utils/constsRoutes";
-import Register from "./pages/Register";
+import Register from "./pages/User/Register";
 
 export const authRoutes: IPath[] = [
   {
@@ -29,8 +35,8 @@ export const authRoutes: IPath[] = [
     exact: true,
   },
   {
-    path: BASKET_ROUTE,
-    Component: Basket,
+    path: USER_OFFICE_ROUTE,
+    Component: UserOffice,
   },
   {
     path: BUY_TICKET,
@@ -45,14 +51,33 @@ export const authRoutes: IPath[] = [
 
 export const adminRoutes: IPath[] = [
   {
-    path: ADMIN_ROUTE,
-    Component: AdminPage,
-    exact: true,
+    path: ADMIN_OFFICE_ROUTE,
+    Component: AdminOffice,
   },
   {
     path: FILMS_ROUTE,
     Component: Films,
+  },
+  {
+    path: FILM_PREVIEW,
+    Component: FilmPreview,
+  },
+  {
+    path: FILMS_ROUTE + "/:id",
+    Component: AboutFilm,
     exact: true,
+  },
+  {
+    path: ADD_FILM,
+    Component: AddFilmPage,
+  },
+  {
+    path: ADD_CINEMA,
+    Component: AddCinemaPage,
+  },
+  {
+    path: ABOUTUS_ROUTE,
+    Component: AboutUS,
   },
 ];
 

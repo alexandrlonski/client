@@ -2,6 +2,7 @@ import {
   IChangeTextModal,
   IToggleLogoutShowModal,
   IToggleErrorShowModal,
+  IToggleDeleteFilmShowModal,
 } from "../../types/modal";
 import { Actions } from "../cases/cases";
 
@@ -10,6 +11,12 @@ export const toggleShowLogoutModal = (
 ): IToggleLogoutShowModal => ({
   type: Actions.CHANGE_SHOW_LOGOUT_MODAL,
   logoutModalShow,
+});
+export const toggleShowDeleteFilmModal = (
+  deleteFilmModalShow: boolean
+): IToggleDeleteFilmShowModal => ({
+  type: Actions.CHANGE_SHOW_DELETE_FILM_MODAL,
+  deleteFilmModalShow,
 });
 export const toggleShowErrorModal = (
   errorModalShow: boolean

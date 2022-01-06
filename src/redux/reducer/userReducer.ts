@@ -1,9 +1,10 @@
 import { IUserState } from "../../types/user";
+import { USER } from "../../utils/constsRoles";
 import { UserActions } from "../actions-types/userActions";
 import { Actions } from "../cases/cases";
 
 const initialState: IUserState = {
-  role: "USER",
+  role: USER,
   isAuth: false,
   name: "",
 };

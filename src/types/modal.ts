@@ -8,6 +8,10 @@ export interface IToggleErrorShowModal {
   type: Actions;
   errorModalShow: boolean;
 }
+export interface IToggleDeleteFilmShowModal {
+  type: Actions;
+  deleteFilmModalShow: boolean;
+}
 export interface IChangeTextModal {
   type: Actions;
   text: string;
@@ -16,5 +20,6 @@ export interface IChangeTextModal {
 export interface IModalState {
   errorModalShow: boolean;
   logoutModalShow: boolean;
+  deleteFilmModalShow: boolean;
   text?: string;
 }

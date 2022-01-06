@@ -1,14 +1,12 @@
 import { Actions } from "../redux/cases/cases";
 
 export interface IFilm {
-  createdAt?: string;
   description: string;
   filmsListId?: number | null;
   id: number | null;
   img: string;
   ticketId?: number | null;
   title: string;
-  updatedAt?: string;
 }
 
 export interface IChangeFilm {
