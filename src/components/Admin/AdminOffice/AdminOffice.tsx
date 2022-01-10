@@ -2,7 +2,12 @@ import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { RootState } from "../../../redux/reducer/rootReducer";
-import { ADD_CINEMA, ADD_FILM } from "../../../utils/constsRoutes";
+import {
+  ADD_CINEMA,
+  ADD_FILM,
+  ADMIN_CINEMAS,
+  ADMIN_FILMS,
+} from "../../../utils/constsRoutes";
 
 const AdminOffice = () => {
   const admin = useSelector((state: RootState) => state.user);
@@ -18,18 +23,23 @@ const AdminOffice = () => {
           Role: {admin.role}
         </ListGroup.Item>
         <ListGroup.Item action variant="info">
-          <NavLink className="link button m-1" to={ADD_FILM}>
-            Add Film
+          <NavLink className="link button m-1" to={ADMIN_FILMS}>
+            Films
+          </NavLink>
+        </ListGroup.Item>
+        <ListGroup.Item action variant="info">
+          <NavLink className="link button m-1" to={ADMIN_CINEMAS}>
+            Cinemas
           </NavLink>
         </ListGroup.Item>
         <ListGroup.Item action variant="info">
           <NavLink className="link button m-1" to={ADD_CINEMA}>
-            Add Cinema
+            Sessions
           </NavLink>
         </ListGroup.Item>
         <ListGroup.Item action variant="info">
           <NavLink className="link button m-1" to={ADD_CINEMA}>
-            Add Session
+            Users
           </NavLink>
         </ListGroup.Item>
       </ListGroup>

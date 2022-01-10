@@ -7,7 +7,10 @@ import Films from "./pages/Common/Films";
 import FilmPreview from "./pages/Admin/FilmPreviewPage";
 import BuyTicket from "./pages/User/BuyTicket";
 import AddFilmPage from "./pages/Admin/AddFilmPage";
+import AdminFilms from "./components/Admin/AdminFilms";
+import AdminCinemas from "./components/Admin/AdminCinema";
 import AddCinemaPage from "./pages/Admin/AddCinemaPage";
+import UpdateFilm from "./components/Admin/UpdateFilm";
 import { IPath } from "./types/types";
 import {
   ABOUTUS_ROUTE,
@@ -20,6 +23,9 @@ import {
   REGISTRATION_ROUTE,
   ADD_FILM,
   ADD_CINEMA,
+  ADMIN_FILMS,
+  UPDATE_FILM,
+  ADMIN_CINEMAS,
 } from "./utils/constsRoutes";
 import Register from "./pages/User/Register";
 
@@ -55,6 +61,14 @@ export const adminRoutes: IPath[] = [
     Component: AdminOffice,
   },
   {
+    path: ADMIN_FILMS,
+    Component: AdminFilms,
+  },
+  {
+    path: ADMIN_CINEMAS,
+    Component: AdminCinemas,
+  },
+  {
     path: FILMS_ROUTE,
     Component: Films,
   },
@@ -70,6 +84,10 @@ export const adminRoutes: IPath[] = [
   {
     path: ADD_FILM,
     Component: AddFilmPage,
+  },
+  {
+    path: UPDATE_FILM,
+    Component: UpdateFilm,
   },
   {
     path: ADD_CINEMA,
