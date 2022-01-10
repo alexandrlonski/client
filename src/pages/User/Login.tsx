@@ -4,44 +4,65 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { REGISTRATION_ROUTE } from "../../utils/constsRoutes";
 import { userLogin } from "../../redux/async-actions/user";
 import { useDispatch } from "react-redux";
+import { IFormLogin } from "../../types/validation";
+import { validateLog } from "../../common-functions/validation";
 
 const Login: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+
+  const formInitialValues: IFormLogin = { email: "", password: "" };
+  const errorsInitialValues: IFormLogin = {
+    email: "",
+    password: "",
+  };
+  const [formValues, setFormValues] = useState(formInitialValues);
+  const [formErrors, setFormErrors] = useState(errorsInitialValues);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    setFormErrors(validateLog(formValues));
+  };
+
   const login = () => {
-    dispatch(userLogin(email, password, navigate));
+    dispatch(userLogin(formValues.email, formValues.password, navigate));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formErrors.email.length === 0 && formErrors.password.length === 0) {
+      login();
+    }
   };
 
   return (
-    <Form
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+    <Form className="form" onSubmit={handleSubmit}>
       <h2 className="text-center">LogIn Page</h2>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
+          name="email"
+          value={formValues.email}
+          onChange={handleChange}
           type="email"
           placeholder="Enter email"
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        <p className="text-danger validation">{formErrors.email}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
-          value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.target.value);
-          }}
+          name="password"
+          value={formValues.password}
+          onChange={handleChange}
           type="password"
           placeholder="Password"
         />
+        <p className="text-danger validation">{formErrors.password}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
@@ -55,7 +76,7 @@ const Login: FC = () => {
         className="mt-3 align-self-end"
         variant="outline-success"
         type="submit"
-        onClick={login}>
+        onClick={handleClick}>
         LogIn
       </Button>
     </Form>

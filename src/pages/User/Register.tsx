@@ -1,59 +1,95 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Form, Button, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LOGIN_ROUTE } from "../../utils/constsRoutes";
 import { userRegistration } from "../../redux/async-actions/user";
+import { IFormRegistred } from "../../types/validation";
+import { validateReg } from "../../common-functions/validation";
 
 const Registeration: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+
+  const formInitialValues: IFormRegistred = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const errorsInitialValues: IFormRegistred = {
+    name: "",
+    email: "",
+    password: "",
+  };
+  const [formValues, setFormValues] = useState(formInitialValues);
+  const [formErrors, setFormErrors] = useState(errorsInitialValues);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    setFormErrors(validateReg(formValues));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (
+      (formErrors.name.length === 0,
+      formErrors.email.length === 0,
+      formErrors.password.length === 0)
+    ) {
+      register();
+    }
+  };
+
   const register = () => {
-    dispatch(userRegistration(email, password, name, navigate));
+    dispatch(
+      userRegistration(
+        formValues.email,
+        formValues.password,
+        formValues.name,
+        navigate
+      )
+    );
   };
 
   return (
-    <Form
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+    <Form className="form" onSubmit={handleSubmit}>
       <h2 className="text-center">Register Page</h2>
       <Form.Group className="mb-3" controlId="formBasicName">
         <Form.Label>Name</Form.Label>
         <Form.Control
-          value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
-          }
+          name="name"
+          value={formValues.name}
+          onChange={handleChange}
           type="text"
           placeholder="Enter Name"
         />
+        <p className="text-danger validation">{formErrors.name}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
-          value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
+          name="email"
+          value={formValues.email}
+          onChange={handleChange}
           type="email"
           placeholder="Enter email"
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
+        <p className="text-danger validation">{formErrors.email}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
-          value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setPassword(e.target.value);
-          }}
+          name="password"
+          value={formValues.password}
+          onChange={handleChange}
           type="password"
           placeholder="Password"
         />
+        <p className="text-danger validation">{formErrors.password}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
@@ -67,7 +103,7 @@ const Registeration: FC = () => {
         className="mt-3 align-self-end"
         variant="outline-success"
         type="submit"
-        onClick={register}>
+        onClick={handleClick}>
         Registration
       </Button>
     </Form>
