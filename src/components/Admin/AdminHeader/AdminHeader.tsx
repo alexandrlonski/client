@@ -4,12 +4,12 @@ import { RootState } from "../../../redux/reducer/rootReducer";
 import { toggleShowLogoutModal } from "../../../redux/action-creators/modal";
 import { Nav, Navbar, Container, Form, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { ADMIN_ICON } from "../../../data/icon";
 import {
   ABOUTUS_ROUTE,
   ADMIN_OFFICE_ROUTE,
   FILMS_ROUTE,
 } from "../../../utils/constsRoutes";
+import AdminIcon from "../../../assets/users-icons/admin.png";
 
 const AdminHeader: FC = () => {
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const AdminHeader: FC = () => {
               LogOut
             </div>
             <NavLink className="link" to={ADMIN_OFFICE_ROUTE}>
-              <Image className="user-icon" src={ADMIN_ICON} rounded />
+              <Image className="user-icon" src={AdminIcon} rounded />
               <div>{name}</div>
             </NavLink>
           </div>

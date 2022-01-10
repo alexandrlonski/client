@@ -1,15 +1,22 @@
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { BUY_TICKET, FILMS_ROUTE, LOGIN_ROUTE } from "../../../utils/constsRoutes";
+import {
+  BUY_TICKET,
+  FILMS_ROUTE,
+  LOGIN_ROUTE,
+} from "../../../utils/constsRoutes";
 import { SERVER } from "../../../utils/constsPath";
 import { IFilm } from "../../../types/film";
 import { changeFilm } from "../../../redux/action-creators/film";
-import "./Film.scss";
 import { RootState } from "../../../redux/reducer/rootReducer";
 import { toggleShowDeleteFilmModal } from "../../../redux/action-creators/modal";
 import { ADMIN } from "../../../utils/constsRoles";
+import AdminFilmBtn from "../../Admin/AdminFilmBtn";
+import UserFilmBtn from "../../User/UserFilmBtn";
+
+import "./Film.scss";
 
 const Film: FC<IFilm> = (props) => {
   const { id, description, img, title } = props;
@@ -39,23 +46,10 @@ const Film: FC<IFilm> = (props) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text className="truncate-text">{description}</Card.Text>
-
         {role === ADMIN ? (
-          <div className="d-flex justify-content-between">
-            <button className="link button">update</button>
-            <button className="link button" onClick={filmDelete}>
-              delete
-            </button>
-          </div>
+          <AdminFilmBtn delete={filmDelete} />
         ) : (
-          <div>
-            <button className=" link button mb-3" onClick={buyTicket}>
-              Buy a ticket online
-            </button>
-            <button className="link button" onClick={readMore}>
-              Read more
-            </button>
-          </div>
+          <UserFilmBtn buy={buyTicket} read={readMore} />
         )}
       </Card.Body>
     </Card>

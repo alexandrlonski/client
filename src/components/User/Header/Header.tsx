@@ -11,7 +11,7 @@ import {
 import { toggleShowLogoutModal } from "../../../redux/action-creators/modal";
 import { Nav, Navbar, Container, Form, Image } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { USER_ICON } from "../../../data/icon";
+import UserIcon from "../../../assets/users-icons/user.png";
 
 const Header: FC = () => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Header: FC = () => {
         </NavLink>
         <Nav className="d-flex justify-content-between ">
           <Form.Select className="select-options">
-            <option onClick={() => console.log(1)}>City</option>
+            <option>City</option>
             {cinemas.map((item) => (
               <option>{item.city}</option>
             ))}
@@ -52,7 +52,7 @@ const Header: FC = () => {
                 LogOut
               </div>
               <NavLink className="link" to={USER_OFFICE_ROUTE}>
-                <Image className="user-icon" src={USER_ICON} rounded />
+                <Image className="user-icon" src={UserIcon} rounded />
                 <div>{name}</div>
               </NavLink>
             </div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { createFilm } from "../../../redux/async-actions/film";
 
 const Admin = () => {
@@ -20,13 +19,17 @@ const Admin = () => {
 
   return (
     <div className="d-flex justify-content-between">
-      <Form className="m-3" onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
+      <Form
+        className="m-3"
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => e.preventDefault()}>
         <h2 className="text-center">Add Film</h2>
         <Form.Group className="mb-3" controlId="formBasicTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
             value={title}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setTitle(e.target.value)
+            }
             type="text"
             placeholder="Title"
           />
@@ -37,15 +40,24 @@ const Admin = () => {
             as="textarea"
             rows={5}
             value={description}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDesc(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setDesc(e.target.value)
+            }
             type="text"
             placeholder="Description"
           />
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Control type="file" onChange={(e: any) => setFile(e.target.files[0])} />
+          <Form.Control
+            type="file"
+            onChange={(e: any) => setFile(e.target.files[0])}
+          />
         </Form.Group>
-        <Button className="mt-3 align-self-end" variant="outline-success" type="submit" onClick={createNewFilm}>
+        <Button
+          className="mt-3 align-self-end"
+          variant="outline-success"
+          type="submit"
+          onClick={createNewFilm}>
           Create
         </Button>
       </Form>

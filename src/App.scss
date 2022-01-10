@@ -1,8 +1,10 @@
+@import "./scss/variables";
+
 .button {
-  background-color: #787978;
+  background-color: $btn-bg-color;
   border: none;
   border-radius: 4px;
-  color: white;
+  color: $btn-text-color;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -13,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: $link-text-color;
   margin: 0 3px;
   padding: 5px 10px;
   font-size: 16px;
@@ -21,7 +23,7 @@
   transition: all 0.3s;
   cursor: pointer;
   &:hover {
-    color: #4ca3dd;
+    color: $hover-link-color;
   }
 }
 

@@ -1,12 +1,14 @@
+@import "../../../scss/variables";
+
 .place {
   width: 30px;
   height: 30px;
-  background-color: #808080;
+  background-color: $place-bg-color;
   margin: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #357fb1;
+    background-color: $place-hover-color;
   }
 }
 .vip-place {
@@ -15,12 +17,12 @@
   justify-content: center;
   width: 60px;
   height: 30px;
-  background-color: #da8383;
+  background-color: $vip-place-color;
   margin: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #357fb1;
+    background-color: $place-hover-color;
   }
 }
 .screen {
