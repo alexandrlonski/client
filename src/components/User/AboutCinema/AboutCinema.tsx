@@ -17,11 +17,7 @@ const AboutCinema: FC = () => {
     <Carousel fade className="carusel">
       {cinemas.map((item) => (
         <Carousel.Item>
-          <img
-            className="d-block size "
-            src={SERVER + item.img}
-            alt="First slide"
-          />
+          <img className="d-block image" src={SERVER + item.img} alt="First slide" />
           <Carousel.Caption>
             <h3>{item.name}</h3>
             <p>City {item.city}</p>

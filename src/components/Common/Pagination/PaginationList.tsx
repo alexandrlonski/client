@@ -3,6 +3,7 @@ import { Pagination } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../../../redux/action-creators/film";
 import { RootState } from "../../../redux/reducer/rootReducer";
+import "./Pagination.scss";
 
 const PaginationList: FC = () => {
   const { pageView } = useSelector((state: RootState) => state);
@@ -15,10 +16,7 @@ const PaginationList: FC = () => {
   return (
     <Pagination className="">
       {pages.map((page) => (
-        <Pagination.Item
-          key={page}
-          active={pageView.pageNumber === page}
-          onClick={() => dispatch(changePage(page))}>
+        <Pagination.Item key={page} active={pageView.pageNumber === page} onClick={() => dispatch(changePage(page))}>
           {page}
         </Pagination.Item>
       ))}

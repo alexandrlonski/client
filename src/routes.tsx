@@ -4,7 +4,7 @@ import AdminOffice from "./pages/Admin/OfficePage";
 import LoginP from "./pages/User/Login";
 import UserOffice from "./pages/User/OfficePage";
 import Films from "./pages/Common/Films";
-import FilmPreview from "./pages/Admin/FilmPreview";
+import FilmPreview from "./pages/Admin/FilmPreviewPage";
 import BuyTicket from "./pages/User/BuyTicket";
 import AddFilmPage from "./pages/Admin/AddFilmPage";
 import AddCinemaPage from "./pages/Admin/AddCinemaPage";

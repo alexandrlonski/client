@@ -7,7 +7,7 @@ import { cinemaReducer, cinemasReducer } from "./cinemaReducer";
 
 const rootReducer = combineReducers({
   modal: modalReducer,
-  filmId: filmReducer,
+  film: filmReducer,
   user: userReducer,
   films: filmsReducer,
   pageView: filmsCountReducer,

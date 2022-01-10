@@ -7,7 +7,7 @@ import { IFilm } from "../../types/film";
 import { SERVER } from "../../utils/constsPath";
 
 const BuyTicket: FC = () => {
-  const { id } = useSelector((state: RootState) => state.filmId);
+  const { id } = useSelector((state: RootState) => state.film);
   const films: IFilm[] = useSelector((state: RootState) => state.films);
   const film = films.find((film) => film.id === id);
 
@@ -19,9 +19,7 @@ const BuyTicket: FC = () => {
             <Card.Img variant="top" className="w-100" src={SERVER + film.img} />
             <Card.Body>
               <Card.Title className="fs-3 ">{film.title}</Card.Title>
-              <Card.Text className="fs-6 truncate-text">
-                {film.description}
-              </Card.Text>
+              <Card.Text className="fs-6 truncate-text">{film.description}</Card.Text>
             </Card.Body>
           </Card>
         ) : null}

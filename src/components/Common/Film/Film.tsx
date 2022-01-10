@@ -2,17 +2,14 @@ import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import {
-  BUY_TICKET,
-  FILMS_ROUTE,
-  LOGIN_ROUTE,
-} from "../../../utils/constsRoutes";
+import { BUY_TICKET, FILMS_ROUTE, LOGIN_ROUTE } from "../../../utils/constsRoutes";
 import { SERVER } from "../../../utils/constsPath";
 import { IFilm } from "../../../types/film";
 import { changeFilm } from "../../../redux/action-creators/film";
 import "./Film.scss";
 import { RootState } from "../../../redux/reducer/rootReducer";
 import { toggleShowDeleteFilmModal } from "../../../redux/action-creators/modal";
+import { ADMIN } from "../../../utils/constsRoles";
 
 const Film: FC<IFilm> = (props) => {
   const { id, description, img, title } = props;
@@ -38,37 +35,26 @@ const Film: FC<IFilm> = (props) => {
 
   return (
     <Card className="card">
-      <Card.Img variant="top" className="filmImage cover" src={SERVER + img} />
+      <Card.Img variant="top" className="film-image cover" src={SERVER + img} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text className="truncate-text">{description}</Card.Text>
 
-        {role === "ADMIN" ? (
+        {role === ADMIN ? (
           <div className="d-flex justify-content-between">
-            <Button variant="secondary" className="link button">
-              update
-            </Button>
-            <Button
-              variant="secondary"
-              className="link button"
-              onClick={filmDelete}>
+            <button className="link button">update</button>
+            <button className="link button" onClick={filmDelete}>
               delete
-            </Button>
+            </button>
           </div>
         ) : (
           <div>
-            <Button
-              variant="secondary"
-              className=" link button mb-3"
-              onClick={buyTicket}>
+            <button className=" link button mb-3" onClick={buyTicket}>
               Buy a ticket online
-            </Button>
-            <Button
-              variant="secondary"
-              className="link button"
-              onClick={readMore}>
+            </button>
+            <button className="link button" onClick={readMore}>
               Read more
-            </Button>
+            </button>
           </div>
         )}
       </Card.Body>

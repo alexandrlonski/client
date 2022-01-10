@@ -1,15 +1,14 @@
 import { Dispatch } from "react";
 import { createCinemaReq, getCinemasReq } from "../../http/cinema";
-import {
-  changeTextModal,
-  toggleShowErrorModal,
-} from "../action-creators/modal";
+import { changeTextModal, toggleShowErrorModal } from "../action-creators/modal";
 import { ICinema } from "../../types/cinema";
 import { addAllCinemas } from "../action-creators/cinema";
 import { CINEMACREATED } from "../../utils/constsSuccess";
+import { IAddCinemas } from "../actions-types/cinemaActions";
+import { IChangeTextModal, IToggleErrorShowModal } from "../../types/modal";
 
 export const getCinemas = () => {
-  return async function (dispatch: Dispatch<any>) {
+  return async function (dispatch: Dispatch<IAddCinemas | IChangeTextModal | IToggleErrorShowModal>) {
     try {
       const data: ICinema[] = await getCinemasReq();
       dispatch(addAllCinemas(data));
@@ -20,7 +19,7 @@ export const getCinemas = () => {
   };
 };
 export const createCinema = (cinema: FormData) => {
-  return async function (dispatch: Dispatch<any>) {
+  return async function (dispatch: Dispatch<IChangeTextModal | IToggleErrorShowModal>) {
     try {
       const data = await createCinemaReq(cinema);
       dispatch(changeTextModal(CINEMACREATED));
