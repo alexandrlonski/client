@@ -58,3 +58,21 @@
 .form {
   width: 300px;
 }
+
+.admin-list-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $link-text-color;
+  margin: 0 3px;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+  opacity: 0.7;
+  cursor: pointer;
+  &:hover {
+    color: $link-text-color;
+    opacity: 1;
+  }
+}

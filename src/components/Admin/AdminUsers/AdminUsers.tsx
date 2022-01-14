@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/reducer/rootReducer";
-import { IUserGet } from "../../../types/user";
+import { IGetUser } from "../../../types/user";
 
 const AdminUsers = () => {
   // const users: IUserGet[] = useSelector((state: RootState) => state.user);

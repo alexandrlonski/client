@@ -6,7 +6,7 @@ import Header from "./components/User/Header";
 import AdminHeader from "./components/Admin/AdminHeader";
 import ErrorModal from "./components/Common/ErrorModal";
 import LogoutModal from "./components/Common/LogoutModal";
-import DeleteFilmModal from "./components/Admin/DeleteFilmModal";
+import DeleteFilmModal from "./components/Admin/DeleteModal";
 import AppRouter from "../src/components/Common/AppRouter";
 import Footer from "./components/User/Footer";
 import "./App.scss";

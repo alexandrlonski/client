@@ -3,7 +3,7 @@ import { Actions } from "../redux/cases/cases";
 export interface IFilm {
   description: string;
   filmsListId?: number | null;
-  id: number | null;
+  id: number;
   img: string;
   ticketId?: number | null;
   title: string;
@@ -31,7 +31,7 @@ export interface IFetchFilms {
   count: number;
   rows: IFilm[];
 }
-export interface IPageView {
+export interface IPageViewFilms {
   count: number;
   limit: number;
   pageNumber: number;

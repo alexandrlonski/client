@@ -1,3 +1,5 @@
+import { IGetUser } from "../../types/user";
+
 export interface IChangeUser {
   readonly type: "CHANGE_USER";
   isAuth: boolean;
@@ -18,9 +20,14 @@ export interface ICheckUser {
   readonly type: "CHECK_USER";
   isAuth: boolean;
 }
+export interface IGetUsers {
+  readonly type: "GET_USERS";
+  users: IGetUser[];
+}
 export type UserActions =
   | IChangeUser
   | IChangeUserRole
   | IChangeUserName
   | ILogOutUser
+  | IGetUsers
   | ICheckUser;

@@ -11,9 +11,7 @@ import { SERVER } from "../../../utils/constsPath";
 import { IFilm } from "../../../types/film";
 import { changeFilm } from "../../../redux/action-creators/film";
 import { RootState } from "../../../redux/reducer/rootReducer";
-import { toggleShowDeleteFilmModal } from "../../../redux/action-creators/modal";
-import { ADMIN } from "../../../utils/constsRoles";
-import AdminFilmBtn from "../../Admin/AdminFilmBtn";
+
 import UserFilmBtn from "../../User/UserFilmBtn";
 
 import "./Film.scss";
@@ -34,23 +32,13 @@ const Film: FC<IFilm> = (props) => {
     localStorage.setItem("film", JSON.stringify(props));
   };
 
-  const filmDelete = (): void => {
-    dispatch(changeFilm({ id, description, img, title }));
-    dispatch(toggleShowDeleteFilmModal(true));
-  };
-  const { role } = useSelector((state: RootState) => state.user);
-
   return (
     <Card className="card">
       <Card.Img variant="top" className="film-image cover" src={SERVER + img} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text className="truncate-text">{description}</Card.Text>
-        {role === ADMIN ? (
-          <AdminFilmBtn delete={filmDelete} />
-        ) : (
-          <UserFilmBtn buy={buyTicket} read={readMore} />
-        )}
+        <UserFilmBtn buy={buyTicket} read={readMore} />
       </Card.Body>
     </Card>
   );

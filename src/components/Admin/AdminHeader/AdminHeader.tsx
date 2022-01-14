@@ -20,7 +20,11 @@ const AdminHeader: FC = () => {
   const logout = () => {
     dispatch(toggleShowLogoutModal(true));
   };
-
+  // const reader = new FileReader();
+  // reader.addEventListener('loadend', (data) => {
+  //     data = base64
+  // });
+  // reader.readAsDataURL(files[0]);
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -28,21 +32,6 @@ const AdminHeader: FC = () => {
           AdminPage
         </NavLink>
         <Nav className="d-flex justify-content-between ">
-          <Form.Select className="select-options">
-            <option onClick={() => console.log(1)}>City</option>
-            {cinemas.map((item) => (
-              <option>{item.city}</option>
-            ))}
-          </Form.Select>
-
-          <NavLink className="link" to={FILMS_ROUTE}>
-            Films
-          </NavLink>
-
-          <NavLink className="link" to={ABOUTUS_ROUTE}>
-            Cinemas
-          </NavLink>
-
           <div className="d-flex justify-content-between align-items-center ">
             <div onClick={logout} className="link button">
               LogOut

@@ -1,41 +1,39 @@
 import { IFormLogin, IFormRegistred } from "../types/validation";
+import {
+  EMAIL_REQUIRED_ERROR,
+  EMAIL_FORMAT_ERROR,
+  NAME_REQUIRED_ERROR,
+  PASSWORD_MAX_LENGTH_ERROR,
+  PASSWORD_MIN_LENGTH_ERROR,
+  PASSWORD_REQUIRED_ERROR,
+  REG_EXPRESSION,
+} from "../utils/constsValidate";
 
-export const validateReg = (values: IFormRegistred) => {
-  const errors: IFormRegistred = { name: "", email: "", password: "" };
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/i;
-  if (!values.name) {
-    errors.name = "Username is required!";
+export const validateName = (name: string) => {
+  let errorsName: string = "";
+  if (!name) {
+    errorsName = NAME_REQUIRED_ERROR;
   }
-  if (!values.email) {
-    errors.email = "Email is required!";
-  } else if (!regex.test(values.email)) {
-    errors.email = "This is not a valid email format!";
-  }
-  if (!values.password) {
-    errors.password = "Password is required";
-  } else if (values.password.length < 4) {
-    errors.password = "Password must be more than 4 characters";
-  } else if (values.password.length > 10) {
-    errors.password = "Password cannot exceed more than 10 characters";
-  }
-  return errors;
+  return errorsName;
 };
-
-export const validateLog = (values: IFormLogin) => {
-  const errors: IFormLogin = { email: "", password: "" };
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,4}$/i;
-
-  if (!values.email) {
-    errors.email = "Email is required!";
-  } else if (!regex.test(values.email)) {
-    errors.email = "This is not a valid email format!";
+export const validateEmail = (email: string) => {
+  let errorsEmail: string = "";
+  const regex = REG_EXPRESSION.mail;
+  if (!email) {
+    errorsEmail = EMAIL_REQUIRED_ERROR;
+  } else if (!regex.test(email)) {
+    errorsEmail = EMAIL_FORMAT_ERROR;
   }
-  if (!values.password) {
-    errors.password = "Password is required";
-  } else if (values.password.length < 4) {
-    errors.password = "Password must be more than 4 characters";
-  } else if (values.password.length > 10) {
-    errors.password = "Password cannot exceed more than 10 characters";
+  return errorsEmail;
+};
+export const validatePassword = (password: string) => {
+  let errorsPassword: string = "";
+  if (!password) {
+    errorsPassword = PASSWORD_REQUIRED_ERROR;
+  } else if (password.length < 4) {
+    errorsPassword = PASSWORD_MIN_LENGTH_ERROR;
+  } else if (password.length > 10) {
+    errorsPassword = PASSWORD_MAX_LENGTH_ERROR;
   }
-  return errors;
+  return errorsPassword;
 };

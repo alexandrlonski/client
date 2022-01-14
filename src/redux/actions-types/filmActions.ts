@@ -1,19 +1,19 @@
 import { IFilm } from "../../types/film";
 
 export interface IChangeFilmAction {
-  readonly type: "CHANGE_ID";
+  readonly type: "CHANGE_FILM";
   payload: IFilm;
 }
-export interface IChangeCount {
-  readonly type: "CHANGE_COUNT";
+export interface IChangeCountFilms {
+  readonly type: "CHANGE_FILMS_COUNT";
   payload: number;
 }
-export interface IChangePage {
-  readonly type: "CHANGE_PAGE";
+export interface IChangePageFilms {
+  readonly type: "CHANGE_FILMS_PAGE";
   payload: number;
 }
-export interface IChangeLimit {
-  readonly type: "CHANGE_LIMIT";
+export interface IChangeLimitFilms {
+  readonly type: "CHANGE_FILMS_LIMIT";
   payload: number;
 }
 export interface IAddFilms {
@@ -29,6 +29,6 @@ export type FilmActions =
   | IChangeFilmAction
   | IAddFilms
   | ICreateFilm
-  | IChangePage
-  | IChangeLimit
-  | IChangeCount;
+  | IChangePageFilms
+  | IChangeLimitFilms
+  | IChangeCountFilms;

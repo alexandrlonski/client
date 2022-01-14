@@ -7,6 +7,7 @@ import {
   ADD_FILM,
   ADMIN_CINEMAS,
   ADMIN_FILMS,
+  USERS,
 } from "../../../utils/constsRoutes";
 
 const AdminOffice = () => {
@@ -38,7 +39,7 @@ const AdminOffice = () => {
           </NavLink>
         </ListGroup.Item>
         <ListGroup.Item action variant="info">
-          <NavLink className="link button m-1" to={ADD_CINEMA}>
+          <NavLink className="link button m-1" to={USERS}>
             Users
           </NavLink>
         </ListGroup.Item>

@@ -5,39 +5,78 @@ import { REGISTRATION_ROUTE } from "../../utils/constsRoutes";
 import { userLogin } from "../../redux/async-actions/user";
 import { useDispatch } from "react-redux";
 import { IFormLogin } from "../../types/validation";
-import { validateLog } from "../../common-functions/validation";
+import {
+  validateEmail,
+  validatePassword,
+} from "../../common-functions/validation";
 
 const Login: FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
 
-  const formInitialValues: IFormLogin = { email: "", password: "" };
-  const errorsInitialValues: IFormLogin = {
-    email: "",
-    password: "",
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>): any => {
+    setEmail(e.target.value);
+    setEmailError(validateEmail(e.target.value));
   };
-  const [formValues, setFormValues] = useState(formInitialValues);
-  const [formErrors, setFormErrors] = useState(errorsInitialValues);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
+  const handleFocusEmail = (e: React.FocusEvent<HTMLInputElement>): any => {
+    setEmailError(validateEmail(email));
   };
-
-  const handleClick = (e: React.MouseEvent) => {
-    setFormErrors(validateLog(formValues));
+  const handleChangePassword = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): any => {
+    setPassword(e.target.value);
+    setPasswordError(validatePassword(e.target.value));
+  };
+  const handleFocusPassword = (e: React.FocusEvent<HTMLInputElement>): any => {
+    setPasswordError(validatePassword(password));
   };
 
   const login = () => {
-    dispatch(userLogin(formValues.email, formValues.password, navigate));
+    dispatch(userLogin(email, password, navigate));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formErrors.email.length === 0 && formErrors.password.length === 0) {
+    if (emailError === "" && passwordError === "") {
       login();
     }
   };
+  const handleClick = (e: React.MouseEvent) => {
+    setEmailError(validateEmail(email));
+    setPasswordError(validatePassword(password));
+  };
+
+  // const formInitialValues: IFormLogin = { email: "", password: "" };
+  // const errorsInitialValues: IFormLogin = {
+  //   email: "",
+  //   password: "",
+  // };
+  // const [formValues, setFormValues] = useState(formInitialValues);
+  // const [formErrors, setFormErrors] = useState(errorsInitialValues);
+
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormValues({ ...formValues, [name]: value });
+  // };
+
+  // const handleClick = (e: React.MouseEvent) => {
+  //   setFormErrors(validateLog(formValues));
+  // };
+
+  // const login = () => {
+  //   dispatch(userLogin(formValues.email, formValues.password, navigate));
+  // };
+
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (formErrors.email.length === 0 && formErrors.password.length === 0) {
+  //     login();
+  //   }
+  // };
 
   return (
     <Form className="form" onSubmit={handleSubmit}>
@@ -46,23 +85,23 @@ const Login: FC = () => {
         <Form.Label>Email address</Form.Label>
         <Form.Control
           name="email"
-          value={formValues.email}
-          onChange={handleChange}
+          value={email}
+          onChange={handleChangeEmail}
           type="email"
           placeholder="Enter email"
         />
-        <p className="text-danger validation">{formErrors.email}</p>
+        <p className="text-danger validation">{emailError}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
           name="password"
-          value={formValues.password}
-          onChange={handleChange}
+          value={password}
+          onChange={handleChangePassword}
           type="password"
           placeholder="Password"
         />
-        <p className="text-danger validation">{formErrors.password}</p>
+        <p className="text-danger validation">{passwordError}</p>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />

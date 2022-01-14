@@ -4,7 +4,7 @@ import { Actions } from "../cases/cases";
 
 const initialFillmSate: IFilm = {
   description: "",
-  id: null,
+  id: 0,
   img: "",
   title: "",
 };
@@ -14,7 +14,7 @@ export const filmReducer = (
   action: FilmActions
 ): IFilm => {
   switch (action.type) {
-    case Actions.CHANGE_ID:
+    case Actions.CHANGE_FILM:
       return { ...action.payload };
 
     default:

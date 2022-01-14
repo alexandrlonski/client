@@ -1,15 +1,15 @@
 import { Actions } from "../redux/cases/cases";
 
-export interface IUserGet {
+export interface IGetUser {
   id: number;
   email: string;
   role: string;
   name: string;
-  iat: number;
-  exp: number;
+  iat?: number;
+  exp?: number;
 }
 
-export interface IUserState {
+export interface IStateUser {
   role: string;
   isAuth: boolean;
   name: string;

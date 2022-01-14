@@ -9,7 +9,7 @@ import { showFilms } from "../../redux/async-actions/film";
 const Films: FC = () => {
   const films: IFilm[] = useSelector((state: RootState) => state.films);
   const { limit, pageNumber, count } = useSelector(
-    (state: RootState) => state.pageView
+    (state: RootState) => state.filmsPageView
   );
   const dispatch = useDispatch();
   useEffect(() => {

@@ -6,6 +6,14 @@ export async function createFilmReq(film: FormData): Promise<IFilm> {
   return data;
 }
 
+export async function updateFilmReq(
+  id: number,
+  film: FormData
+): Promise<IFilm> {
+  const data: IFilm = await (await $authHost.put("api/film/" + id, film)).data;
+  return data;
+}
+
 export async function getFilmsReq(
   page: number,
   limit = 5
@@ -14,7 +22,7 @@ export async function getFilmsReq(
   return data;
 }
 
-export async function getFilmReq(id: string): Promise<IFilm> {
+export async function getFilmReq(id: number): Promise<IFilm> {
   const { data } = await $host.get("api/film/" + id);
   return data;
 }

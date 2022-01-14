@@ -4,13 +4,14 @@ import AdminOffice from "./pages/Admin/OfficePage";
 import LoginP from "./pages/User/Login";
 import UserOffice from "./pages/User/OfficePage";
 import Films from "./pages/Common/Films";
-import FilmPreview from "./pages/Admin/FilmPreviewPage";
 import BuyTicket from "./pages/User/BuyTicket";
 import AddFilmPage from "./pages/Admin/AddFilmPage";
 import AdminFilms from "./components/Admin/AdminFilms";
 import AdminCinemas from "./components/Admin/AdminCinema";
 import AddCinemaPage from "./pages/Admin/AddCinemaPage";
 import UpdateFilm from "./components/Admin/UpdateFilm";
+import UpdateCinema from "./components/Admin/UpdateCinema";
+import Users from "./components/Admin/Users";
 import { IPath } from "./types/types";
 import {
   ABOUTUS_ROUTE,
@@ -18,7 +19,6 @@ import {
   ADMIN_OFFICE_ROUTE,
   BUY_TICKET,
   FILMS_ROUTE,
-  FILM_PREVIEW,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
   ADD_FILM,
@@ -26,6 +26,8 @@ import {
   ADMIN_FILMS,
   UPDATE_FILM,
   ADMIN_CINEMAS,
+  UPDATE_CINEMA,
+  USERS,
 } from "./utils/constsRoutes";
 import Register from "./pages/User/Register";
 
@@ -69,14 +71,6 @@ export const adminRoutes: IPath[] = [
     Component: AdminCinemas,
   },
   {
-    path: FILMS_ROUTE,
-    Component: Films,
-  },
-  {
-    path: FILM_PREVIEW,
-    Component: FilmPreview,
-  },
-  {
     path: FILMS_ROUTE + "/:id",
     Component: AboutFilm,
     exact: true,
@@ -90,12 +84,16 @@ export const adminRoutes: IPath[] = [
     Component: UpdateFilm,
   },
   {
+    path: UPDATE_CINEMA,
+    Component: UpdateCinema,
+  },
+  {
     path: ADD_CINEMA,
     Component: AddCinemaPage,
   },
   {
-    path: ABOUTUS_ROUTE,
-    Component: AboutUS,
+    path: USERS,
+    Component: Users,
   },
 ];
 

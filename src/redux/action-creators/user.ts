@@ -1,6 +1,12 @@
-import { IChangeUserRole, IUserIsLogin, IUserLogout } from "../../types/user";
-import { IChangeUserName } from "../actions-types/userActions";
+import {
+  IChangeUserRole,
+  IGetUser,
+  IUserIsLogin,
+  IUserLogout,
+} from "../../types/user";
+import { IChangeUserName, IGetUsers } from "../actions-types/userActions";
 import { Actions } from "../cases/cases";
+import { ActionsForUser } from "../cases/userCases";
 
 export const userIsLogin = (isAuth: boolean): IUserIsLogin => ({
   type: Actions.CHANGE_USER,
@@ -18,4 +24,8 @@ export const changeUserName = (name: string): IChangeUserName => ({
 
 export const userLogout = (): IUserLogout => ({
   type: Actions.LOGOUT_USER,
+});
+export const addUsers = (users: IGetUser[]): IGetUsers => ({
+  type: ActionsForUser.GET_USERS,
+  users,
 });
