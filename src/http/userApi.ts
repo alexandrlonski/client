@@ -1,17 +1,18 @@
 import { $authHost, $host } from "./index";
 import jwt_decode from "jwt-decode";
-import { IUserGet } from "../types/user";
-import { USER } from "../utils/constsRoles";
+import { IGetUser } from "../types/user";
+import { ADMIN, USER } from "../utils/constsRoles";
 
 export async function registration(
   email: string,
   password: string,
-  role = USER
-): Promise<IUserGet> {
+  name: string
+): Promise<IGetUser> {
   const { data } = await $host.post("api/user/registration", {
     email,
     password,
-    role,
+    name,
+    role: USER,
   });
   localStorage.setItem("token", data.token);
   return jwt_decode(data.token);
@@ -20,7 +21,7 @@ export async function registration(
 export async function login(
   email: string,
   password: string
-): Promise<IUserGet> {
+): Promise<IGetUser> {
   const { data } = await $host.post("api/user/login", {
     email,
     password,
@@ -29,8 +30,12 @@ export async function login(
   return jwt_decode(data.token);
 }
 
-export async function checkIsLogin(): Promise<IUserGet> {
+export async function checkIsLogin(): Promise<IGetUser> {
   const { data } = await $authHost.get("api/user/auth");
   localStorage.setItem("token", data.token);
   return jwt_decode(data.token);
+}
+export async function getUsersReq(): Promise<any> {
+  const { data } = await $authHost.get("api/user");
+  return data;
 }

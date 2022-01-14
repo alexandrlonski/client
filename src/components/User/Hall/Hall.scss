@@ -1,0 +1,34 @@
+@import "../../../scss/variables";
+
+.place {
+  width: 30px;
+  height: 30px;
+  background-color: $place-bg-color;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: $place-hover-color;
+  }
+}
+.vip-place {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 30px;
+  background-color: $vip-place-color;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: $place-hover-color;
+  }
+}
+.screen {
+  width: 350px;
+  height: 10px;
+  background-color: #357fb1;
+  margin-bottom: 50px;
+  border-radius: 100% 100% 0 0;
+}

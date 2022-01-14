@@ -1,8 +1,16 @@
 import { Actions } from "../redux/cases/cases";
 
-export interface IToggleShowModal {
+export interface IToggleLogoutShowModal {
   type: Actions;
-  show: boolean;
+  logoutModalShow: boolean;
+}
+export interface IToggleErrorShowModal {
+  type: Actions;
+  errorModalShow: boolean;
+}
+export interface IToggleDeleteFilmShowModal {
+  type: Actions;
+  deleteFilmModalShow: boolean;
 }
 export interface IChangeTextModal {
   type: Actions;
@@ -10,6 +18,8 @@ export interface IChangeTextModal {
 }
 
 export interface IModalState {
-  show: boolean;
+  errorModalShow: boolean;
+  logoutModalShow: boolean;
+  deleteFilmModalShow: boolean;
   text?: string;
 }

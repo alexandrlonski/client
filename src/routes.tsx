@@ -1,21 +1,35 @@
-import AboutFilm from "./pages/AboutFilm";
-import AboutUS from "./pages/AboutUS";
-import Admin from "./pages/Admin";
-import LoginP from "./pages/Login";
-import Basket from "./pages/BasketPage";
-import Films from "./pages/Films";
-import BuyTicket from "./pages/BuyTicket";
+import AboutFilm from "./pages/User/AboutFilm";
+import AboutUS from "./pages/User/AboutUS";
+import AdminOffice from "./pages/Admin/OfficePage";
+import LoginP from "./pages/User/Login";
+import UserOffice from "./pages/User/OfficePage";
+import Films from "./pages/Common/Films";
+import BuyTicket from "./pages/User/BuyTicket";
+import AddFilmPage from "./pages/Admin/AddFilmPage";
+import AdminFilms from "./components/Admin/AdminFilms";
+import AdminCinemas from "./components/Admin/AdminCinema";
+import AddCinemaPage from "./pages/Admin/AddCinemaPage";
+import UpdateFilm from "./components/Admin/UpdateFilm";
+import UpdateCinema from "./components/Admin/UpdateCinema";
+import Users from "./components/Admin/Users";
 import { IPath } from "./types/types";
 import {
   ABOUTUS_ROUTE,
-  ADMIN_ROUTE,
-  BASKET_ROUTE,
+  USER_OFFICE_ROUTE,
+  ADMIN_OFFICE_ROUTE,
   BUY_TICKET,
   FILMS_ROUTE,
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
+  ADD_FILM,
+  ADD_CINEMA,
+  ADMIN_FILMS,
+  UPDATE_FILM,
+  ADMIN_CINEMAS,
+  UPDATE_CINEMA,
+  USERS,
 } from "./utils/constsRoutes";
-import Register from "./pages/Register";
+import Register from "./pages/User/Register";
 
 export const authRoutes: IPath[] = [
   {
@@ -29,8 +43,8 @@ export const authRoutes: IPath[] = [
     exact: true,
   },
   {
-    path: BASKET_ROUTE,
-    Component: Basket,
+    path: USER_OFFICE_ROUTE,
+    Component: UserOffice,
   },
   {
     path: BUY_TICKET,
@@ -45,9 +59,41 @@ export const authRoutes: IPath[] = [
 
 export const adminRoutes: IPath[] = [
   {
-    path: ADMIN_ROUTE,
-    Component: Admin,
+    path: ADMIN_OFFICE_ROUTE,
+    Component: AdminOffice,
+  },
+  {
+    path: ADMIN_FILMS,
+    Component: AdminFilms,
+  },
+  {
+    path: ADMIN_CINEMAS,
+    Component: AdminCinemas,
+  },
+  {
+    path: FILMS_ROUTE + "/:id",
+    Component: AboutFilm,
     exact: true,
+  },
+  {
+    path: ADD_FILM,
+    Component: AddFilmPage,
+  },
+  {
+    path: UPDATE_FILM,
+    Component: UpdateFilm,
+  },
+  {
+    path: UPDATE_CINEMA,
+    Component: UpdateCinema,
+  },
+  {
+    path: ADD_CINEMA,
+    Component: AddCinemaPage,
+  },
+  {
+    path: USERS,
+    Component: Users,
   },
 ];
 

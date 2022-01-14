@@ -1,8 +1,15 @@
-export const ADMIN_ROUTE: string = "/admin";
+export const ADMIN_OFFICE_ROUTE: string = "/admin_office";
+export const ADD_FILM: string = "/add_film";
+export const USERS: string = "/users";
+export const UPDATE_FILM: string = "/update_film";
+export const UPDATE_CINEMA: string = "/update_cinema";
+export const ADD_CINEMA: string = "/add_cinema";
 export const LOGIN_ROUTE: string = "/login";
 export const REGISTRATION_ROUTE: string = "/registration";
 export const FILMS_ROUTE: string = "/films";
-export const BASKET_ROUTE: string = "/basket";
+export const USER_OFFICE_ROUTE: string = "/user_office";
 export const ABOUTFILM_ROUTE: string = "/about_film";
 export const ABOUTUS_ROUTE: string = "/about_us";
 export const BUY_TICKET: string = "/buy_ticket";
+export const ADMIN_FILMS: string = "/films_admin";
+export const ADMIN_CINEMAS: string = "/films_cinemas";

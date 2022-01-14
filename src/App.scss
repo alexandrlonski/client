@@ -1,8 +1,10 @@
+@import "./scss/variables";
+
 .button {
-  background-color: #787978;
+  background-color: $btn-bg-color;
   border: none;
   border-radius: 4px;
-  color: white;
+  color: $btn-text-color;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -10,19 +12,19 @@
 }
 
 .link {
-  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $link-text-color;
   margin: 0 3px;
   padding: 5px 10px;
   font-size: 16px;
   text-decoration: none;
-  &:hover {
-    color: #4ca3dd;
-    transition: 0.3 ease-in;
-  }
-}
-
-.link {
+  transition: all 0.3s;
   cursor: pointer;
+  &:hover {
+    color: $hover-link-color;
+  }
 }
 
 .truncate-text {
@@ -36,4 +38,41 @@
 
 .w-40 {
   width: 40%;
+}
+
+.user-icon {
+  width: 34px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+.select-options {
+  cursor: pointer;
+}
+
+.validation {
+  position: absolute;
+  font-size: 12px;
+}
+
+.form {
+  width: 300px;
+}
+
+.admin-list-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $link-text-color;
+  margin: 0 3px;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s;
+  opacity: 0.7;
+  cursor: pointer;
+  &:hover {
+    color: $link-text-color;
+    opacity: 1;
+  }
 }
